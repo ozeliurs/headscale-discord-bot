@@ -28,7 +28,12 @@ class RoutesEmbed(discord.Embed):
                 if route.prefix not in prefixes or route.enabled:
                     prefixes[route.prefix] = route
 
-            status = EMOJI_SUCCESS if all(route.enabled for route in prefixes.values()) else (EMOJI_WARNING if any(route.enabled for route in prefixes.values()) else EMOJI_FAILURE)
+            if all(route.enabled for route in prefixes.values()):
+                status = EMOJI_SUCCESS
+            elif any(route.enabled for route in prefixes.values()):
+                status = EMOJI_WARNING
+            else:
+                status = EMOJI_FAILURE
 
             self.add_field(
                 name=f"{status} {node}",

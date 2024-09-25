@@ -34,10 +34,10 @@ def get_routes():
     try:
         return [Route(
             route_id=route['id'],
-            node=route['machine']['name'],
+            node=route['node']['name'],
             prefix=route['prefix'],
             advertised=route['advertised'],
             enabled=route['enabled']
-        ) for route in response.json()["routes"] if route['machine']['name']]
+        ) for route in response.json()["routes"] if route['node']['name']]
     except KeyError:
         raise HeadscaleError("Invalid response structure.")

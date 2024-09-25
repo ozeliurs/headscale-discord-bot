@@ -33,7 +33,7 @@ class TestHeadscale(unittest.TestCase):
             "routes": [
                 {
                     "id": "1",
-                    "machine": {"name": "node1"},
+                    "node": {"name": "node1"},
                     "prefix": "10.0.0.0/24",
                     "advertised": True,
                     "enabled": True

@@ -25,9 +25,7 @@ class RoutesEmbed(discord.Embed):
             # Group routes by prefix
             prefixes = {}
             for route in nodes[node]:
-                if route.prefix not in prefixes:
-                    prefixes[route.prefix] = route
-                elif route.enabled:
+                if route.prefix not in prefixes or route.enabled:
                     prefixes[route.prefix] = route
 
             status = EMOJI_SUCCESS if all(route.enabled for route in prefixes.values()) else (EMOJI_WARNING if any(route.enabled for route in prefixes.values()) else EMOJI_FAILURE)
